@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsGraphicsRouteImport } from './routes/projects/graphics'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsGraphicsRoute = ProjectsGraphicsRouteImport.update({
+  id: '/projects/graphics',
+  path: '/projects/graphics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTableRoute = DemoTableRouteImport.update({
@@ -26,27 +32,31 @@ const DemoTableRoute = DemoTableRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/table': typeof DemoTableRoute
+  '/projects/graphics': typeof ProjectsGraphicsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/table': typeof DemoTableRoute
+  '/projects/graphics': typeof ProjectsGraphicsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/demo/table': typeof DemoTableRoute
+  '/projects/graphics': typeof ProjectsGraphicsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/table'
+  fullPaths: '/' | '/demo/table' | '/projects/graphics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/table'
-  id: '__root__' | '/' | '/demo/table'
+  to: '/' | '/demo/table' | '/projects/graphics'
+  id: '__root__' | '/' | '/demo/table' | '/projects/graphics'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoTableRoute: typeof DemoTableRoute
+  ProjectsGraphicsRoute: typeof ProjectsGraphicsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/graphics': {
+      id: '/projects/graphics'
+      path: '/projects/graphics'
+      fullPath: '/projects/graphics'
+      preLoaderRoute: typeof ProjectsGraphicsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/table': {
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoTableRoute: DemoTableRoute,
+  ProjectsGraphicsRoute: ProjectsGraphicsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
