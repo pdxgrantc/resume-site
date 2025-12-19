@@ -6,7 +6,7 @@ import type {
   ReactPortal,
 } from 'react'
 
-export const Route = createFileRoute('/projects/graphics')({
+export const Route = createFileRoute('/courses/intro-to-computer-graphics')({
   component: RouteComponent,
 })
 
@@ -15,21 +15,22 @@ type project = {
   description: string
 }
 
-/* TODO put each project into a dropdown */
 function RouteComponent() {
   return (
     <>
-      <div>Hello "/projects/graphics"!</div>
-      <title>OpenGL Projects</title>
-      <h1>Graphics Based Projects</h1>
+      <title>CS 450 - Intro to Computer Graphics</title>
+      <h1>Intro to Computer Graphics</h1>
+      <p>
+        This course was an introduction to the world of 3d graphics and 3d
+        rendering techniques within OpenGL. The course covered the basic
+        graphics pipeline up to basic vertex and fragment shader
+        implementation.
+      </p>
       <p>
         These projects were written while enrolled in CS 450 at Oregon State
-        University. This class was an introduction to 3d computer graphics using
-        OpenGL. The course covered the basic graphics pipeline up to basic
-        vertex and fragmentation shader implementation.
+        University.
       </p>
       <div>
-        <p>test</p>
         <Project projectData={ProjectData[0]} />
         <Project projectData={ProjectData[1]} />
         <Project projectData={ProjectData[2]} />

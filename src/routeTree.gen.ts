@@ -9,18 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsGraphicsRouteImport } from './routes/projects/graphics'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
+import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses/intro-to-computer-graphics'
+import { Route as CoursesCapstoneRouteImport } from './routes/courses/capstone'
+import { Route as CoursesCS493RouteImport } from './routes/courses/CS493'
+import { Route as AboutMeAboutMeRouteImport } from './routes/about-me/about-me'
+import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me/work-experience/it'
+import { Route as AboutMePersonalProjectsServerManagementRouteImport } from './routes/about-me/personal-projects/server-management'
 
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsGraphicsRoute = ProjectsGraphicsRouteImport.update({
-  id: '/projects/graphics',
-  path: '/projects/graphics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTableRoute = DemoTableRouteImport.update({
@@ -28,51 +34,132 @@ const DemoTableRoute = DemoTableRouteImport.update({
   path: '/demo/table',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoursesIntroToComputerGraphicsRoute =
+  CoursesIntroToComputerGraphicsRouteImport.update({
+    id: '/intro-to-computer-graphics',
+    path: '/intro-to-computer-graphics',
+    getParentRoute: () => CoursesRoute,
+  } as any)
+const CoursesCapstoneRoute = CoursesCapstoneRouteImport.update({
+  id: '/capstone',
+  path: '/capstone',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesCS493Route = CoursesCS493RouteImport.update({
+  id: '/CS493',
+  path: '/CS493',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const AboutMeAboutMeRoute = AboutMeAboutMeRouteImport.update({
+  id: '/about-me/about-me',
+  path: '/about-me/about-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutMeWorkExperienceItRoute = AboutMeWorkExperienceItRouteImport.update({
+  id: '/about-me/work-experience/it',
+  path: '/about-me/work-experience/it',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutMePersonalProjectsServerManagementRoute =
+  AboutMePersonalProjectsServerManagementRouteImport.update({
+    id: '/about-me/personal-projects/server-management',
+    path: '/about-me/personal-projects/server-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/courses': typeof CoursesRouteWithChildren
+  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/courses/CS493': typeof CoursesCS493Route
+  '/courses/capstone': typeof CoursesCapstoneRoute
+  '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/projects/graphics': typeof ProjectsGraphicsRoute
+  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
+  '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/courses': typeof CoursesRouteWithChildren
+  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/courses/CS493': typeof CoursesCS493Route
+  '/courses/capstone': typeof CoursesCapstoneRoute
+  '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/projects/graphics': typeof ProjectsGraphicsRoute
+  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
+  '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/courses': typeof CoursesRouteWithChildren
+  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/courses/CS493': typeof CoursesCS493Route
+  '/courses/capstone': typeof CoursesCapstoneRoute
+  '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/projects/graphics': typeof ProjectsGraphicsRoute
+  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
+  '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/table' | '/projects/graphics'
+  fullPaths:
+    | '/'
+    | '/courses'
+    | '/about-me/about-me'
+    | '/courses/CS493'
+    | '/courses/capstone'
+    | '/courses/intro-to-computer-graphics'
+    | '/demo/table'
+    | '/about-me/personal-projects/server-management'
+    | '/about-me/work-experience/it'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/table' | '/projects/graphics'
-  id: '__root__' | '/' | '/demo/table' | '/projects/graphics'
+  to:
+    | '/'
+    | '/courses'
+    | '/about-me/about-me'
+    | '/courses/CS493'
+    | '/courses/capstone'
+    | '/courses/intro-to-computer-graphics'
+    | '/demo/table'
+    | '/about-me/personal-projects/server-management'
+    | '/about-me/work-experience/it'
+  id:
+    | '__root__'
+    | '/'
+    | '/courses'
+    | '/about-me/about-me'
+    | '/courses/CS493'
+    | '/courses/capstone'
+    | '/courses/intro-to-computer-graphics'
+    | '/demo/table'
+    | '/about-me/personal-projects/server-management'
+    | '/about-me/work-experience/it'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CoursesRoute: typeof CoursesRouteWithChildren
+  AboutMeAboutMeRoute: typeof AboutMeAboutMeRoute
   DemoTableRoute: typeof DemoTableRoute
-  ProjectsGraphicsRoute: typeof ProjectsGraphicsRoute
+  AboutMePersonalProjectsServerManagementRoute: typeof AboutMePersonalProjectsServerManagementRoute
+  AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/graphics': {
-      id: '/projects/graphics'
-      path: '/projects/graphics'
-      fullPath: '/projects/graphics'
-      preLoaderRoute: typeof ProjectsGraphicsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/table': {
@@ -82,13 +169,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoTableRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/courses/intro-to-computer-graphics': {
+      id: '/courses/intro-to-computer-graphics'
+      path: '/intro-to-computer-graphics'
+      fullPath: '/courses/intro-to-computer-graphics'
+      preLoaderRoute: typeof CoursesIntroToComputerGraphicsRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/capstone': {
+      id: '/courses/capstone'
+      path: '/capstone'
+      fullPath: '/courses/capstone'
+      preLoaderRoute: typeof CoursesCapstoneRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/CS493': {
+      id: '/courses/CS493'
+      path: '/CS493'
+      fullPath: '/courses/CS493'
+      preLoaderRoute: typeof CoursesCS493RouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/about-me/about-me': {
+      id: '/about-me/about-me'
+      path: '/about-me/about-me'
+      fullPath: '/about-me/about-me'
+      preLoaderRoute: typeof AboutMeAboutMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-me/work-experience/it': {
+      id: '/about-me/work-experience/it'
+      path: '/about-me/work-experience/it'
+      fullPath: '/about-me/work-experience/it'
+      preLoaderRoute: typeof AboutMeWorkExperienceItRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-me/personal-projects/server-management': {
+      id: '/about-me/personal-projects/server-management'
+      path: '/about-me/personal-projects/server-management'
+      fullPath: '/about-me/personal-projects/server-management'
+      preLoaderRoute: typeof AboutMePersonalProjectsServerManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface CoursesRouteChildren {
+  CoursesCS493Route: typeof CoursesCS493Route
+  CoursesCapstoneRoute: typeof CoursesCapstoneRoute
+  CoursesIntroToComputerGraphicsRoute: typeof CoursesIntroToComputerGraphicsRoute
+}
+
+const CoursesRouteChildren: CoursesRouteChildren = {
+  CoursesCS493Route: CoursesCS493Route,
+  CoursesCapstoneRoute: CoursesCapstoneRoute,
+  CoursesIntroToComputerGraphicsRoute: CoursesIntroToComputerGraphicsRoute,
+}
+
+const CoursesRouteWithChildren =
+  CoursesRoute._addFileChildren(CoursesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoursesRoute: CoursesRouteWithChildren,
+  AboutMeAboutMeRoute: AboutMeAboutMeRoute,
   DemoTableRoute: DemoTableRoute,
-  ProjectsGraphicsRoute: ProjectsGraphicsRoute,
+  AboutMePersonalProjectsServerManagementRoute:
+    AboutMePersonalProjectsServerManagementRoute,
+  AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
