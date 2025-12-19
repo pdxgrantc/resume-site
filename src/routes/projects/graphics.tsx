@@ -35,13 +35,14 @@ function RouteComponent() {
         <Project projectData={ProjectData[2]} />
         <Project projectData={ProjectData[3]} />
         <Project projectData={ProjectData[4]} />
+        <Project projectData={ProjectData[5]} />
+        <Project projectData={ProjectData[6]} />
       </div>
     </>
   )
 }
 
 function Project({ projectData }: { projectData: project }) {
-  console.log(projectData)
   return (
     <>
       <h2>{projectData.title}</h2>
@@ -52,20 +53,38 @@ function Project({ projectData }: { projectData: project }) {
 
 const ProjectData = [
   {
-    title: 'Project1',
+    title: 'Draw Something Cool in 3D!',
     description:
-      'Project 1 description with lots and lots and lots of text. okay i lied its not that much text lol haha.',
+      'Create your own fun 3D scene using OpenGL with at least 100 vertices, 3D thickness, and at least 5 colors. Demonstrates basic 3D object drawing and OpenGL manipulation.',
   },
   {
-    title: 'Project2',
+    title: 'Using Transformations to Animate a Carousel Horse!',
     description:
-      'Project 2 description with lots and lots and lots of text. okay i lied its not that much text lol haha.',
+      'Build and animate a carousel horse using compounded transformations. Includes drawing a horse, animating along a circular path, adding rocking motion, and switching between two views.',
   },
   {
-    title: 'Project3',
+    title: 'Lighting',
     description:
-      'Project 1 description with lots and lots and lots of text. okay i lied its not that much text lol haha.',
+      'Create a 3D scene showing dynamic OpenGL lighting with a floor, walls, multiple objects including OBJ models, and animation of a point or spot light with color toggles.',
   },
-  { title: 'Project4' },
-  { title: 'Project5' },
+  {
+    title: 'Keytime Animation',
+    description:
+      "Perform keytime animation of two 3D objects using smooth interpolation. Animate at least nine quantities (eye, look-at, up-vector, and objects' transforms) over 10 seconds.",
+  },
+  {
+    title: 'Texture Mapping',
+    description:
+      'Display several textured objects (OsuSphere, OsuCube, OsuCylinder, OsuCone, OsuTorus, and an OBJ object) using BMP textures in OpenGL, toggle textures on/off and animate light source.',
+  },
+  {
+    title: 'Shaders, I',
+    description:
+      'Write a GLSL vertex and fragment shader to create a ‘pig-in-the-python’ effect on a snake OBJ model with per-fragment lighting, showing animated bulge effects.',
+  },
+  {
+    title: 'Shaders, II',
+    description:
+      'Use a GLSL fragment shader to display silhouette edges and per-fragment lighting on a 3D object. Must toggle surface and silhouette display and adjust silhouette tolerance.',
+  },
 ]
