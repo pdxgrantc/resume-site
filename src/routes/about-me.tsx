@@ -1,14 +1,14 @@
 import { Outlet, createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/courses')({
+export const Route = createFileRoute('/about-me')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return(
+  return (
     <>
-    <div>Hello "/bio/courses"!</div>
-    <Outlet />
+      <Outlet />
+      <div>Hello "/bio/about-me"!</div>
     </>
   )
 }

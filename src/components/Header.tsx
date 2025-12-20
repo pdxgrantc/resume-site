@@ -57,6 +57,43 @@ export default function Header() {
             <span className="font-medium">Home</span>
           </Link>
 
+          <Link
+            to="/courses"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <span className="font-medium">Courses</span>
+          </Link>
+
+          <Link
+            to="/about-me"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <span className="font-medium">Bio</span>
+          </Link>
+
+          <Link
+            to="/about-me/server-management"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+            activeProps={{
+              className:
+                'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+            }}
+          >
+            <span className="font-medium">Server Management</span>
+          </Link>
+          
+
           {/* Demo Links Start */}
 
           <Link

@@ -10,18 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as AboutMeRouteImport } from './routes/about-me'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses/intro-to-computer-graphics'
 import { Route as CoursesCapstoneRouteImport } from './routes/courses/capstone'
 import { Route as CoursesCS493RouteImport } from './routes/courses/CS493'
-import { Route as AboutMeAboutMeRouteImport } from './routes/about-me/about-me'
+import { Route as AboutMeServerManagementRouteImport } from './routes/about-me/server-management'
 import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me/work-experience/it'
-import { Route as AboutMePersonalProjectsServerManagementRouteImport } from './routes/about-me/personal-projects/server-management'
 
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutMeRoute = AboutMeRouteImport.update({
+  id: '/about-me',
+  path: '/about-me',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -50,100 +55,92 @@ const CoursesCS493Route = CoursesCS493RouteImport.update({
   path: '/CS493',
   getParentRoute: () => CoursesRoute,
 } as any)
-const AboutMeAboutMeRoute = AboutMeAboutMeRouteImport.update({
-  id: '/about-me/about-me',
-  path: '/about-me/about-me',
-  getParentRoute: () => rootRouteImport,
+const AboutMeServerManagementRoute = AboutMeServerManagementRouteImport.update({
+  id: '/server-management',
+  path: '/server-management',
+  getParentRoute: () => AboutMeRoute,
 } as any)
 const AboutMeWorkExperienceItRoute = AboutMeWorkExperienceItRouteImport.update({
-  id: '/about-me/work-experience/it',
-  path: '/about-me/work-experience/it',
-  getParentRoute: () => rootRouteImport,
+  id: '/work-experience/it',
+  path: '/work-experience/it',
+  getParentRoute: () => AboutMeRoute,
 } as any)
-const AboutMePersonalProjectsServerManagementRoute =
-  AboutMePersonalProjectsServerManagementRouteImport.update({
-    id: '/about-me/personal-projects/server-management',
-    path: '/about-me/personal-projects/server-management',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-me': typeof AboutMeRouteWithChildren
   '/courses': typeof CoursesRouteWithChildren
-  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-me': typeof AboutMeRouteWithChildren
   '/courses': typeof CoursesRouteWithChildren
-  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-me': typeof AboutMeRouteWithChildren
   '/courses': typeof CoursesRouteWithChildren
-  '/about-me/about-me': typeof AboutMeAboutMeRoute
+  '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
-  '/about-me/personal-projects/server-management': typeof AboutMePersonalProjectsServerManagementRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-me'
     | '/courses'
-    | '/about-me/about-me'
+    | '/about-me/server-management'
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
     | '/demo/table'
-    | '/about-me/personal-projects/server-management'
     | '/about-me/work-experience/it'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-me'
     | '/courses'
-    | '/about-me/about-me'
+    | '/about-me/server-management'
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
     | '/demo/table'
-    | '/about-me/personal-projects/server-management'
     | '/about-me/work-experience/it'
   id:
     | '__root__'
     | '/'
+    | '/about-me'
     | '/courses'
-    | '/about-me/about-me'
+    | '/about-me/server-management'
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
     | '/demo/table'
-    | '/about-me/personal-projects/server-management'
     | '/about-me/work-experience/it'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutMeRoute: typeof AboutMeRouteWithChildren
   CoursesRoute: typeof CoursesRouteWithChildren
-  AboutMeAboutMeRoute: typeof AboutMeAboutMeRoute
   DemoTableRoute: typeof DemoTableRoute
-  AboutMePersonalProjectsServerManagementRoute: typeof AboutMePersonalProjectsServerManagementRoute
-  AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -153,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/courses'
       fullPath: '/courses'
       preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-me': {
+      id: '/about-me'
+      path: '/about-me'
+      fullPath: '/about-me'
+      preLoaderRoute: typeof AboutMeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -190,29 +194,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCS493RouteImport
       parentRoute: typeof CoursesRoute
     }
-    '/about-me/about-me': {
-      id: '/about-me/about-me'
-      path: '/about-me/about-me'
-      fullPath: '/about-me/about-me'
-      preLoaderRoute: typeof AboutMeAboutMeRouteImport
-      parentRoute: typeof rootRouteImport
+    '/about-me/server-management': {
+      id: '/about-me/server-management'
+      path: '/server-management'
+      fullPath: '/about-me/server-management'
+      preLoaderRoute: typeof AboutMeServerManagementRouteImport
+      parentRoute: typeof AboutMeRoute
     }
     '/about-me/work-experience/it': {
       id: '/about-me/work-experience/it'
-      path: '/about-me/work-experience/it'
+      path: '/work-experience/it'
       fullPath: '/about-me/work-experience/it'
       preLoaderRoute: typeof AboutMeWorkExperienceItRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about-me/personal-projects/server-management': {
-      id: '/about-me/personal-projects/server-management'
-      path: '/about-me/personal-projects/server-management'
-      fullPath: '/about-me/personal-projects/server-management'
-      preLoaderRoute: typeof AboutMePersonalProjectsServerManagementRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AboutMeRoute
     }
   }
 }
+
+interface AboutMeRouteChildren {
+  AboutMeServerManagementRoute: typeof AboutMeServerManagementRoute
+  AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
+}
+
+const AboutMeRouteChildren: AboutMeRouteChildren = {
+  AboutMeServerManagementRoute: AboutMeServerManagementRoute,
+  AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
+}
+
+const AboutMeRouteWithChildren =
+  AboutMeRoute._addFileChildren(AboutMeRouteChildren)
 
 interface CoursesRouteChildren {
   CoursesCS493Route: typeof CoursesCS493Route
@@ -231,12 +241,9 @@ const CoursesRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutMeRoute: AboutMeRouteWithChildren,
   CoursesRoute: CoursesRouteWithChildren,
-  AboutMeAboutMeRoute: AboutMeAboutMeRoute,
   DemoTableRoute: DemoTableRoute,
-  AboutMePersonalProjectsServerManagementRoute:
-    AboutMePersonalProjectsServerManagementRoute,
-  AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
