@@ -1,4 +1,5 @@
 import { Outlet, createFileRoute, Link } from '@tanstack/react-router'
+import PageWrapper from '../components/PageWrapper'
 
 export const Route = createFileRoute('/courses')({
   component: RouteComponent,
@@ -6,13 +7,13 @@ export const Route = createFileRoute('/courses')({
 
 function RouteComponent() {
   return (
-    <>
+    <PageWrapper>
       <div>Notable Courses</div>
       {CourseData.map((data) => (
         <Course key={data.title} data={data} />
       ))}
       <Outlet />
-    </>
+    </PageWrapper>
   )
 }
 
