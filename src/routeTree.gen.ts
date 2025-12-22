@@ -12,12 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as AboutMeRouteImport } from './routes/about-me'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DemoTableRouteImport } from './routes/demo/table'
-import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses/intro-to-computer-graphics'
-import { Route as CoursesCapstoneRouteImport } from './routes/courses/capstone'
-import { Route as CoursesCS493RouteImport } from './routes/courses/CS493'
-import { Route as AboutMeServerManagementRouteImport } from './routes/about-me/server-management'
-import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me/work-experience/it'
+import { Route as DemoTableRouteImport } from './routes/demo_/table'
+import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses_/intro-to-computer-graphics'
+import { Route as CoursesCapstoneRouteImport } from './routes/courses_/capstone'
+import { Route as CoursesCS493RouteImport } from './routes/courses_/CS493'
+import { Route as AboutMeServerManagementRouteImport } from './routes/about-me_/server-management'
+import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me_/work-experience/it'
 
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
@@ -35,41 +35,41 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTableRoute = DemoTableRouteImport.update({
-  id: '/demo/table',
+  id: '/demo_/table',
   path: '/demo/table',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesIntroToComputerGraphicsRoute =
   CoursesIntroToComputerGraphicsRouteImport.update({
-    id: '/intro-to-computer-graphics',
-    path: '/intro-to-computer-graphics',
-    getParentRoute: () => CoursesRoute,
+    id: '/courses_/intro-to-computer-graphics',
+    path: '/courses/intro-to-computer-graphics',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const CoursesCapstoneRoute = CoursesCapstoneRouteImport.update({
-  id: '/capstone',
-  path: '/capstone',
-  getParentRoute: () => CoursesRoute,
+  id: '/courses_/capstone',
+  path: '/courses/capstone',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesCS493Route = CoursesCS493RouteImport.update({
-  id: '/CS493',
-  path: '/CS493',
-  getParentRoute: () => CoursesRoute,
+  id: '/courses_/CS493',
+  path: '/courses/CS493',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeServerManagementRoute = AboutMeServerManagementRouteImport.update({
-  id: '/server-management',
-  path: '/server-management',
-  getParentRoute: () => AboutMeRoute,
+  id: '/about-me_/server-management',
+  path: '/about-me/server-management',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeWorkExperienceItRoute = AboutMeWorkExperienceItRouteImport.update({
-  id: '/work-experience/it',
-  path: '/work-experience/it',
-  getParentRoute: () => AboutMeRoute,
+  id: '/about-me_/work-experience/it',
+  path: '/about-me/work-experience/it',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about-me': typeof AboutMeRouteWithChildren
-  '/courses': typeof CoursesRouteWithChildren
+  '/about-me': typeof AboutMeRoute
+  '/courses': typeof CoursesRoute
   '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
@@ -79,8 +79,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about-me': typeof AboutMeRouteWithChildren
-  '/courses': typeof CoursesRouteWithChildren
+  '/about-me': typeof AboutMeRoute
+  '/courses': typeof CoursesRoute
   '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
@@ -91,14 +91,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about-me': typeof AboutMeRouteWithChildren
-  '/courses': typeof CoursesRouteWithChildren
-  '/about-me/server-management': typeof AboutMeServerManagementRoute
-  '/courses/CS493': typeof CoursesCS493Route
-  '/courses/capstone': typeof CoursesCapstoneRoute
-  '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
-  '/demo/table': typeof DemoTableRoute
-  '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
+  '/about-me': typeof AboutMeRoute
+  '/courses': typeof CoursesRoute
+  '/about-me_/server-management': typeof AboutMeServerManagementRoute
+  '/courses_/CS493': typeof CoursesCS493Route
+  '/courses_/capstone': typeof CoursesCapstoneRoute
+  '/courses_/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
+  '/demo_/table': typeof DemoTableRoute
+  '/about-me_/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -128,19 +128,24 @@ export interface FileRouteTypes {
     | '/'
     | '/about-me'
     | '/courses'
-    | '/about-me/server-management'
-    | '/courses/CS493'
-    | '/courses/capstone'
-    | '/courses/intro-to-computer-graphics'
-    | '/demo/table'
-    | '/about-me/work-experience/it'
+    | '/about-me_/server-management'
+    | '/courses_/CS493'
+    | '/courses_/capstone'
+    | '/courses_/intro-to-computer-graphics'
+    | '/demo_/table'
+    | '/about-me_/work-experience/it'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutMeRoute: typeof AboutMeRouteWithChildren
-  CoursesRoute: typeof CoursesRouteWithChildren
+  AboutMeRoute: typeof AboutMeRoute
+  CoursesRoute: typeof CoursesRoute
+  AboutMeServerManagementRoute: typeof AboutMeServerManagementRoute
+  CoursesCS493Route: typeof CoursesCS493Route
+  CoursesCapstoneRoute: typeof CoursesCapstoneRoute
+  CoursesIntroToComputerGraphicsRoute: typeof CoursesIntroToComputerGraphicsRoute
   DemoTableRoute: typeof DemoTableRoute
+  AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -166,84 +171,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/table': {
-      id: '/demo/table'
+    '/demo_/table': {
+      id: '/demo_/table'
       path: '/demo/table'
       fullPath: '/demo/table'
       preLoaderRoute: typeof DemoTableRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/courses/intro-to-computer-graphics': {
-      id: '/courses/intro-to-computer-graphics'
-      path: '/intro-to-computer-graphics'
+    '/courses_/intro-to-computer-graphics': {
+      id: '/courses_/intro-to-computer-graphics'
+      path: '/courses/intro-to-computer-graphics'
       fullPath: '/courses/intro-to-computer-graphics'
       preLoaderRoute: typeof CoursesIntroToComputerGraphicsRouteImport
-      parentRoute: typeof CoursesRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/courses/capstone': {
-      id: '/courses/capstone'
-      path: '/capstone'
+    '/courses_/capstone': {
+      id: '/courses_/capstone'
+      path: '/courses/capstone'
       fullPath: '/courses/capstone'
       preLoaderRoute: typeof CoursesCapstoneRouteImport
-      parentRoute: typeof CoursesRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/courses/CS493': {
-      id: '/courses/CS493'
-      path: '/CS493'
+    '/courses_/CS493': {
+      id: '/courses_/CS493'
+      path: '/courses/CS493'
       fullPath: '/courses/CS493'
       preLoaderRoute: typeof CoursesCS493RouteImport
-      parentRoute: typeof CoursesRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/about-me/server-management': {
-      id: '/about-me/server-management'
-      path: '/server-management'
+    '/about-me_/server-management': {
+      id: '/about-me_/server-management'
+      path: '/about-me/server-management'
       fullPath: '/about-me/server-management'
       preLoaderRoute: typeof AboutMeServerManagementRouteImport
-      parentRoute: typeof AboutMeRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/about-me/work-experience/it': {
-      id: '/about-me/work-experience/it'
-      path: '/work-experience/it'
+    '/about-me_/work-experience/it': {
+      id: '/about-me_/work-experience/it'
+      path: '/about-me/work-experience/it'
       fullPath: '/about-me/work-experience/it'
       preLoaderRoute: typeof AboutMeWorkExperienceItRouteImport
-      parentRoute: typeof AboutMeRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface AboutMeRouteChildren {
-  AboutMeServerManagementRoute: typeof AboutMeServerManagementRoute
-  AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
-}
-
-const AboutMeRouteChildren: AboutMeRouteChildren = {
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AboutMeRoute: AboutMeRoute,
+  CoursesRoute: CoursesRoute,
   AboutMeServerManagementRoute: AboutMeServerManagementRoute,
-  AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
-}
-
-const AboutMeRouteWithChildren =
-  AboutMeRoute._addFileChildren(AboutMeRouteChildren)
-
-interface CoursesRouteChildren {
-  CoursesCS493Route: typeof CoursesCS493Route
-  CoursesCapstoneRoute: typeof CoursesCapstoneRoute
-  CoursesIntroToComputerGraphicsRoute: typeof CoursesIntroToComputerGraphicsRoute
-}
-
-const CoursesRouteChildren: CoursesRouteChildren = {
   CoursesCS493Route: CoursesCS493Route,
   CoursesCapstoneRoute: CoursesCapstoneRoute,
   CoursesIntroToComputerGraphicsRoute: CoursesIntroToComputerGraphicsRoute,
-}
-
-const CoursesRouteWithChildren =
-  CoursesRoute._addFileChildren(CoursesRouteChildren)
-
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AboutMeRoute: AboutMeRouteWithChildren,
-  CoursesRoute: CoursesRouteWithChildren,
   DemoTableRoute: DemoTableRoute,
+  AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

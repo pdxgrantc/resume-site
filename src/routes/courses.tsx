@@ -1,14 +1,46 @@
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { Outlet, createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/courses')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return(
+  return (
     <>
-    <div>Hello "/bio/courses"!</div>
-    <Outlet />
+      <div>Notable Courses</div>
+      {CourseData.map((data) => (
+        <Course key={data.title} data={data} />
+      ))}
+      <Outlet />
     </>
   )
 }
+
+type course = {
+  title: string
+  number: string
+  link: string
+}
+
+function Course({ data }: { data: course }) {
+  const relativeLink = '/courses/' + data.link
+  return (
+    <Link to={relativeLink}>
+      <h2>{data.title}</h2>
+      <h2>{data.number}</h2>
+    </Link>
+  )
+}
+
+const CourseData: course[] = [
+  {
+    title: 'Intro to Computer Graphics',
+    number: 'CS 450',
+    link: 'intro-to-computer-graphics',
+  },
+  {
+    title: 'Web Application Dev',
+    number: 'CS 493',
+    link: '',
+  },
+]

@@ -13,3 +13,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+@theme {
+  --radius-img: 1rem;
+  --radius-container: 1rem;
+}

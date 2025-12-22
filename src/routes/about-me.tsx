@@ -7,8 +7,8 @@ export const Route = createFileRoute('/about-me')({
 function RouteComponent() {
   return (
     <>
+      <h1>About Me</h1>
       <Outlet />
-      <div>Hello "/bio/about-me"!</div>
     </>
   )
 }
