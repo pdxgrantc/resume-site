@@ -1,4 +1,4 @@
-import { OutsideLink } from "../utils/buttons";
+import { OutsideLink } from "./utils/buttons";
 
 // icons
 import { SiGithub as GitHubLogo } from "react-icons/si";

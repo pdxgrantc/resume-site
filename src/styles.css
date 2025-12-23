@@ -17,14 +17,23 @@ code {
 /* define header height variable */
 :root{
   --header-height: 64px;
+  --page-break: 5rem
 }
 
 
 @theme {
+  --page-break: 1rem;
   --radius-img: 1rem;
   --radius-container: 1rem;
-  --p-page: 5rem;
+  --padding-page: 5rem;
+  --padding-page: 5rem;
+  --padding-page-break: 2rem;
+  --gap-page-break: 2rem;
   --gap-container: 2rem;
+  --background-color-main: #282c34;
+  --background-color-header: #1e2939;
+  --background-color-container: #304666;
+  --color-light: #ededed;
 }
 
 h1, h2, h3, h4, h5, h6 {

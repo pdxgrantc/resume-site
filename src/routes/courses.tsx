@@ -1,5 +1,5 @@
 import { Outlet, createFileRoute, Link } from '@tanstack/react-router'
-import PageWrapper from '../components/PageWrapper'
+import { PageWrapper } from '../components/PageWrapper'
 
 export const Route = createFileRoute('/courses')({
   component: RouteComponent,

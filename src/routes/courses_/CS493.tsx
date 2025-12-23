@@ -1,3 +1,4 @@
+import { PageWrapper } from '@/components/PageWrapper'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/courses_/CS493')({
@@ -5,5 +6,5 @@ export const Route = createFileRoute('/courses_/CS493')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/courses/CS493"!</div>
+  return <PageWrapper>Hello "/courses/CS493"!</PageWrapper>
 }

@@ -3,12 +3,13 @@ import { type ReactNode } from 'react'
 interface PageWrapperProps {
   children: ReactNode
   className?: string
+  usePadding: Boolean
 }
 
-export default function PageWrapper({ children }: PageWrapperProps) {
+export function PageWrapper({ children }: PageWrapperProps) {
   return (
     <div
-      className="max-h-full py-10 bg-[#282c34] text-white text-[calc(10px+2vmin)] max-w-screen m-auto  text-center flex flex-col items-center justify-center"
+      className="px-page max-h-full py-page-break bg-(--bg-main) text-white text-[calc(10px+2vmin)] max-w-screen m-auto text-center flex flex-col items-center justify-center gap-page-break"
       style={{ minHeight: 'calc(100vh - var(--header-height))' }}
     >
       {children}

@@ -11,7 +11,7 @@ export function LinkButton(  { children, route }: { children: React.ReactNode, r
         bg-transparent
         border-0
         h-fit
-        pb-[3px]
+        pb-0.75
         box-border
         border-b-[3px] border-transparent
         align-middle

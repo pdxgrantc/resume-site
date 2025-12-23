@@ -1,10 +1,5 @@
+import { PageWrapper } from '@/components/PageWrapper'
 import { createFileRoute } from '@tanstack/react-router'
-import type {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-} from 'react'
 
 export const Route = createFileRoute('/courses_/intro-to-computer-graphics')({
   component: RouteComponent,
@@ -17,7 +12,7 @@ type project = {
 
 function RouteComponent() {
   return (
-    <>
+    <PageWrapper>
       <title>CS 450 - Intro to Computer Graphics</title>
       <h1>Intro to Computer Graphics</h1>
       <p>
@@ -38,7 +33,7 @@ function RouteComponent() {
         <Project projectData={ProjectData[5]} />
         <Project projectData={ProjectData[6]} />
       </div>
-    </>
+    </PageWrapper>
   )
 }
 

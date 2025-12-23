@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import PageWrapper from '../components/PageWrapper'
-import { Link } from '@tanstack/react-router'
-import { LinkButton } from '../utils/buttons'
+import { PageWrapper } from '@/components/PageWrapper'
+import { LinkButton } from '@/components/utils/buttons'
+import { Container } from '@/components/utils/container'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -9,27 +9,24 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return (
-    <PageWrapper>
-      <header className="flex-1">
-        <div className="flex flex-row flex-nowrap h-full gap-container">
-          <img
-            src="/images/Grant-Headshot.jpg"
-            alt="Grant-Headshot"
-            className="h-120 rounded-img"
-          />
-          <div className="text-left">
-            <h1>Grant Conklin</h1>
-            <h2>-Full Stack Web Developer</h2>
-            <h2>-Computer Science Student At Oregon State University</h2>
-            <LinkButton route="/about-me">
-              <div>
-                <p>About Me</p>
-              </div>
-            </LinkButton>
-          </div>
-        </div>
-      </header>
-    </PageWrapper>
+    <header
+      className="flex-1 max-h-full max-w-screen m-auto flex flex-row flex-nowrap gap-container"
+      style={{ minHeight: 'calc(100vh - var(--header-height))' }}
+    >
+      <img
+        src="/images/Grant-Headshot.jpg"
+        alt="Grant-Headshot"
+        style={{ maxHeight: 'calc(100vh - var(--header-height))' }}
+      />
+      <div className='bg-main w-full text-light'>
+        <h1>Grant Conklin</h1>
+        <h2>-Full Stack Web Developer</h2>
+        <h2>-Computer Science Student At Oregon State University</h2>
+        <LinkButton route="/about-me">
+          <h2>More About Me</h2>
+        </LinkButton>
+      </div>
+    </header>
   )
 }
 
