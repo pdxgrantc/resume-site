@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import PageWrapper from '../../components/PageWrapper'
 
 export const Route = createFileRoute('/about-me_/server-management')({
   component: RouteComponent,
@@ -6,8 +7,8 @@ export const Route = createFileRoute('/about-me_/server-management')({
 
 function RouteComponent() {
   return (
-    <div>
+    <PageWrapper>
       <p>Hello "/about-me/server-management"!</p>
-    </div>
+    </PageWrapper>
   )
 }

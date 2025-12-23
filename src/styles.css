@@ -14,8 +14,43 @@ code {
     monospace;
 }
 
+/* define header height variable */
+:root{
+  --header-height: 64px;
+}
+
 
 @theme {
   --radius-img: 1rem;
   --radius-container: 1rem;
+  --p-page: 5rem;
+  --gap-container: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: semi-bold;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  height: fit-content;
+  padding-bottom: 3px;
+  box-sizing: border-box;
+  border-bottom: 3px solid transparent;
+  font-size: inherit;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
 }
