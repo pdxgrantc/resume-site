@@ -2,7 +2,6 @@ import { type ReactNode } from 'react'
 
 interface PageWrapperProps {
   children: ReactNode
-  className?: string
 }
 
 export function PageWrapper({ children }: PageWrapperProps) {

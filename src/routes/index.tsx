@@ -18,7 +18,7 @@ function App() {
       />
       <div className="bg-main w-full flex flex-col gap-container text-light p-container">
         <div className="">
-          <h2>Grant Conklin</h2>
+          <h1>Grant Conklin</h1>
           <ul>
             <li>
               <h3>-Full Stack Web Developer</h3>

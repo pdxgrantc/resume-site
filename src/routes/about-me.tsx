@@ -7,7 +7,7 @@ export const Route = createFileRoute('/about-me')({
 
 function RouteComponent() {
   return (
-    <PageWrapper className="bg-black">
+    <PageWrapper>
       <h1>About Me</h1>
       <Outlet />
     </PageWrapper>
