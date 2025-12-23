@@ -1,9 +1,9 @@
-import { OutsideLink } from "./utils/buttons";
+import { OutsideLink } from './utils/buttons'
 
 // icons
-import { SiGithub as GitHubLogo } from "react-icons/si";
-import { FaLinkedinIn as LinkedLogo } from "react-icons/fa";
-import { IoIosMail as MailLogo } from "react-icons/io";
+import { SiGithub as GitHubLogo } from 'react-icons/si'
+import { FaLinkedinIn as LinkedLogo } from 'react-icons/fa'
+import { IoIosMail as MailLogo } from 'react-icons/io'
 
 export default function Footer() {
   return (
@@ -12,13 +12,13 @@ export default function Footer() {
         <div className="h-16"></div>
         <div className="flex gap-8">
           <OutsideLink link="https://www.github.com/pdxgrantc">
-            <GitHubLogo className="h-[4rem] w-auto py-2 mx--auto text-button hover:text-button_hover" />
+            <GitHubLogo className="h-16 w-auto py-2 mx--auto text-button hover:text-button_hover" />
           </OutsideLink>
           <OutsideLink link="mailto:pdxgrantc@gmail.com">
-            <MailLogo className="h-[4rem] py-0 w-auto text-button hover:text-button_hover" />
+            <MailLogo className="h-16 py-0 w-auto text-button hover:text-button_hover" />
           </OutsideLink>
           <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
-            <LinkedLogo className="h-[3.5rem] w-auto text-button hover:text-button_hover" />
+            <LinkedLogo className="h-14 w-auto text-button hover:text-button_hover" />
           </OutsideLink>
         </div>
         <div className="mx-auto w-fit">
@@ -27,5 +27,5 @@ export default function Footer() {
         <div className="h-16"></div>
       </div>
     </div>
-  );
+  )
 }

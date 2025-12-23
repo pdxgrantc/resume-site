@@ -9,9 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as AboutMeRouteImport } from './routes/about-me'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsEzBudgetRouteImport } from './routes/projects_/ez-budget'
 import { Route as DemoTableRouteImport } from './routes/demo_/table'
 import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses_/intro-to-computer-graphics'
 import { Route as CoursesCapstoneRouteImport } from './routes/courses_/capstone'
@@ -19,6 +21,11 @@ import { Route as CoursesCS493RouteImport } from './routes/courses_/CS493'
 import { Route as AboutMeServerManagementRouteImport } from './routes/about-me_/server-management'
 import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me_/work-experience/it'
 
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -32,6 +39,11 @@ const AboutMeRoute = AboutMeRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsEzBudgetRoute = ProjectsEzBudgetRouteImport.update({
+  id: '/projects_/ez-budget',
+  path: '/projects/ez-budget',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTableRoute = DemoTableRouteImport.update({
@@ -70,22 +82,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about-me': typeof AboutMeRoute
   '/courses': typeof CoursesRoute
+  '/projects': typeof ProjectsRoute
   '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
+  '/projects/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about-me': typeof AboutMeRoute
   '/courses': typeof CoursesRoute
+  '/projects': typeof ProjectsRoute
   '/about-me/server-management': typeof AboutMeServerManagementRoute
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo/table': typeof DemoTableRoute
+  '/projects/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRoutesById {
@@ -93,11 +109,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about-me': typeof AboutMeRoute
   '/courses': typeof CoursesRoute
+  '/projects': typeof ProjectsRoute
   '/about-me_/server-management': typeof AboutMeServerManagementRoute
   '/courses_/CS493': typeof CoursesCS493Route
   '/courses_/capstone': typeof CoursesCapstoneRoute
   '/courses_/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
   '/demo_/table': typeof DemoTableRoute
+  '/projects_/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me_/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
 export interface FileRouteTypes {
@@ -106,33 +124,39 @@ export interface FileRouteTypes {
     | '/'
     | '/about-me'
     | '/courses'
+    | '/projects'
     | '/about-me/server-management'
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
     | '/demo/table'
+    | '/projects/ez-budget'
     | '/about-me/work-experience/it'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about-me'
     | '/courses'
+    | '/projects'
     | '/about-me/server-management'
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
     | '/demo/table'
+    | '/projects/ez-budget'
     | '/about-me/work-experience/it'
   id:
     | '__root__'
     | '/'
     | '/about-me'
     | '/courses'
+    | '/projects'
     | '/about-me_/server-management'
     | '/courses_/CS493'
     | '/courses_/capstone'
     | '/courses_/intro-to-computer-graphics'
     | '/demo_/table'
+    | '/projects_/ez-budget'
     | '/about-me_/work-experience/it'
   fileRoutesById: FileRoutesById
 }
@@ -140,16 +164,25 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutMeRoute: typeof AboutMeRoute
   CoursesRoute: typeof CoursesRoute
+  ProjectsRoute: typeof ProjectsRoute
   AboutMeServerManagementRoute: typeof AboutMeServerManagementRoute
   CoursesCS493Route: typeof CoursesCS493Route
   CoursesCapstoneRoute: typeof CoursesCapstoneRoute
   CoursesIntroToComputerGraphicsRoute: typeof CoursesIntroToComputerGraphicsRoute
   DemoTableRoute: typeof DemoTableRoute
+  ProjectsEzBudgetRoute: typeof ProjectsEzBudgetRoute
   AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses': {
       id: '/courses'
       path: '/courses'
@@ -169,6 +202,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects_/ez-budget': {
+      id: '/projects_/ez-budget'
+      path: '/projects/ez-budget'
+      fullPath: '/projects/ez-budget'
+      preLoaderRoute: typeof ProjectsEzBudgetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo_/table': {
@@ -220,11 +260,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutMeRoute: AboutMeRoute,
   CoursesRoute: CoursesRoute,
+  ProjectsRoute: ProjectsRoute,
   AboutMeServerManagementRoute: AboutMeServerManagementRoute,
   CoursesCS493Route: CoursesCS493Route,
   CoursesCapstoneRoute: CoursesCapstoneRoute,
   CoursesIntroToComputerGraphicsRoute: CoursesIntroToComputerGraphicsRoute,
   DemoTableRoute: DemoTableRoute,
+  ProjectsEzBudgetRoute: ProjectsEzBudgetRoute,
   AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
 }
 export const routeTree = rootRouteImport

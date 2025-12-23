@@ -25,12 +25,14 @@ code {
   --page-break: 1rem;
   --radius-img: 1rem;
   --radius-container: 1rem;
+  --padding-container: 2rem;
   --padding-page: 5rem;
   --padding-page: 5rem;
   --padding-page-break: 2rem;
   --gap-page-break: 2rem;
-  --gap-container: 2rem;
-  --background-color-main: #282c34;
+  --gap-container: 1.5rem;
+  --gap-header: 1rem;
+  --background-color-main: #101828;
   --background-color-header: #1e2939;
   --background-color-container: #304666;
   --color-light: #ededed;
@@ -48,18 +50,9 @@ h1 {
 
 h2 {
   font-size: 1.5rem;
-  font-weight: semi-bold;
+  font-weight: bold;
 }
 
-.link-button {
-  background: none;
-  border: 0;
-  height: fit-content;
-  padding-bottom: 3px;
-  box-sizing: border-box;
-  border-bottom: 3px solid transparent;
-  font-size: inherit;
-  font-weight: 700;
-  position: relative;
-  vertical-align: middle;
+button {
+  cursor: pointer;
 }
