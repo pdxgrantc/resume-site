@@ -1,4 +1,6 @@
 import { PageWrapper } from '@/components/PageWrapper'
+import { OutsideLink } from '@/components/utils/buttons'
+import { Container } from '@/components/utils/container'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/courses_/intro-to-computer-graphics')({
@@ -8,23 +10,27 @@ export const Route = createFileRoute('/courses_/intro-to-computer-graphics')({
 type project = {
   title: string
   description: string
+  link: string
 }
 
 function RouteComponent() {
   return (
     <PageWrapper>
-      <title>CS 450 - Intro to Computer Graphics</title>
-      <h1>Intro to Computer Graphics</h1>
-      <p>
-        This course was an introduction to the world of 3d graphics and 3d
-        rendering techniques within OpenGL. The course covered the basic
-        graphics pipeline up to basic vertex and fragment shader implementation.
-      </p>
-      <p>
-        These projects were written while enrolled in CS 450 at Oregon State
-        University.
-      </p>
-      <div>
+      <Container>
+        <title>CS 450 - Intro to Computer Graphics</title>
+        <h1>Intro to Computer Graphics</h1>
+        <p>
+          This course was an introduction to the world of 3d graphics and 3d
+          rendering techniques within OpenGL. The course covered the basic
+          graphics pipeline up to basic vertex and fragment shader
+          implementation.
+        </p>
+        <p>
+          These projects were written while enrolled in CS 450 at Oregon State
+          University.
+        </p>
+      </Container>
+      <div className="flex flex-col gap-container">
         <Project projectData={ProjectData[0]} />
         <Project projectData={ProjectData[1]} />
         <Project projectData={ProjectData[2]} />
@@ -39,10 +45,15 @@ function RouteComponent() {
 
 function Project({ projectData }: { projectData: project }) {
   return (
-    <>
-      <h2>{projectData.title}</h2>
-      <h2>{projectData.description}</h2>
-    </>
+    <Container>
+      <div className="flex flex-col text-left">
+        <h2>{projectData.title}</h2>
+        <h3>{projectData.description}</h3>
+        <OutsideLink link={projectData.link}>
+          <h3>View On GitHub</h3>
+        </OutsideLink>
+      </div>
+    </Container>
   )
 }
 

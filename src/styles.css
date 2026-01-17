@@ -25,7 +25,7 @@ code {
   --page-break: 1rem;
   --radius-img: 1rem;
   --radius-container: 1rem;
-  --padding-container: 2rem;
+  --padding-container: 1.5rem;
   --padding-page: 5rem;
   --padding-page: 5rem;
   --padding-page-break: 2rem;
@@ -53,6 +53,16 @@ h2 {
   font-weight: bold;
 }
 
+h3 {
+  font-size: 1.25rem;
+  font-weight: semi-bold;
+}
+
 button {
   cursor: pointer;
+}
+
+/* Increase paragraph spacing inside Tailwind Typography `.prose` */
+.prose p + p {
+  margin-top: 1rem;
 }

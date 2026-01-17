@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
-import { Home, Menu, Table, X } from 'lucide-react'
+import { Home, Menu, Table, X, NotebookTabs, CircleUser, Server } from 'lucide-react'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -59,6 +59,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
             }}
           >
+            <NotebookTabs />
             <span className="font-medium">Courses</span>
           </Link>
 
@@ -71,6 +72,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
             }}
           >
+            <CircleUser />
             <span className="font-medium">About Me</span>
           </Link>
 
@@ -83,11 +85,12 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
             }}
           >
+            <Server />
             <span className="font-medium">Server Management</span>
           </Link>
 
-          {/* Demo Links Start */}
-
+          { /* Demo Links} */}
+          {/*}
           <Link
             to="/demo/table"
             onClick={() => setIsOpen(false)}
@@ -100,8 +103,7 @@ export default function Header() {
             <Table size={20} />
             <span className="font-medium">TanStack Table</span>
           </Link>
-
-          {/* Demo Links End */}
+          */}
         </nav>
       </aside>
     </>
