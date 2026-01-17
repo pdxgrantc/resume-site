@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
-import { Home, Menu, Table, X, NotebookTabs, CircleUser, Server } from 'lucide-react'
+import { Home, Menu, X, NotebookTabs, CircleUser, Server } from 'lucide-react'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
