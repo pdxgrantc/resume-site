@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react'
+import Footer from './Footer'
 
 interface PageWrapperProps {
   children: ReactNode
