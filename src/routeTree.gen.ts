@@ -17,7 +17,6 @@ import { Route as AboutMeServerManagementRouteImport } from './routes/about-me_/
 import { Route as CoursesCS493RouteImport } from './routes/courses_/CS493'
 import { Route as CoursesCapstoneRouteImport } from './routes/courses_/capstone'
 import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses_/intro-to-computer-graphics'
-import { Route as DemoTableRouteImport } from './routes/demo_/table'
 import { Route as ProjectsEzBudgetRouteImport } from './routes/projects_/ez-budget'
 import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me_/work-experience/it'
 
@@ -62,11 +61,6 @@ const CoursesIntroToComputerGraphicsRoute =
     path: '/courses/intro-to-computer-graphics',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DemoTableRoute = DemoTableRouteImport.update({
-  id: '/demo_/table',
-  path: '/demo/table',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProjectsEzBudgetRoute = ProjectsEzBudgetRouteImport.update({
   id: '/projects_/ez-budget',
   path: '/projects/ez-budget',
@@ -87,7 +81,6 @@ export interface FileRoutesByFullPath {
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
-  '/demo/table': typeof DemoTableRoute
   '/projects/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
@@ -100,7 +93,6 @@ export interface FileRoutesByTo {
   '/courses/CS493': typeof CoursesCS493Route
   '/courses/capstone': typeof CoursesCapstoneRoute
   '/courses/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
-  '/demo/table': typeof DemoTableRoute
   '/projects/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
@@ -114,7 +106,6 @@ export interface FileRoutesById {
   '/courses_/CS493': typeof CoursesCS493Route
   '/courses_/capstone': typeof CoursesCapstoneRoute
   '/courses_/intro-to-computer-graphics': typeof CoursesIntroToComputerGraphicsRoute
-  '/demo_/table': typeof DemoTableRoute
   '/projects_/ez-budget': typeof ProjectsEzBudgetRoute
   '/about-me_/work-experience/it': typeof AboutMeWorkExperienceItRoute
 }
@@ -129,7 +120,6 @@ export interface FileRouteTypes {
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
-    | '/demo/table'
     | '/projects/ez-budget'
     | '/about-me/work-experience/it'
   fileRoutesByTo: FileRoutesByTo
@@ -142,7 +132,6 @@ export interface FileRouteTypes {
     | '/courses/CS493'
     | '/courses/capstone'
     | '/courses/intro-to-computer-graphics'
-    | '/demo/table'
     | '/projects/ez-budget'
     | '/about-me/work-experience/it'
   id:
@@ -155,7 +144,6 @@ export interface FileRouteTypes {
     | '/courses_/CS493'
     | '/courses_/capstone'
     | '/courses_/intro-to-computer-graphics'
-    | '/demo_/table'
     | '/projects_/ez-budget'
     | '/about-me_/work-experience/it'
   fileRoutesById: FileRoutesById
@@ -169,7 +157,6 @@ export interface RootRouteChildren {
   CoursesCS493Route: typeof CoursesCS493Route
   CoursesCapstoneRoute: typeof CoursesCapstoneRoute
   CoursesIntroToComputerGraphicsRoute: typeof CoursesIntroToComputerGraphicsRoute
-  DemoTableRoute: typeof DemoTableRoute
   ProjectsEzBudgetRoute: typeof ProjectsEzBudgetRoute
   AboutMeWorkExperienceItRoute: typeof AboutMeWorkExperienceItRoute
 }
@@ -232,13 +219,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesIntroToComputerGraphicsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo_/table': {
-      id: '/demo_/table'
-      path: '/demo/table'
-      fullPath: '/demo/table'
-      preLoaderRoute: typeof DemoTableRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/projects_/ez-budget': {
       id: '/projects_/ez-budget'
       path: '/projects/ez-budget'
@@ -265,7 +245,6 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesCS493Route: CoursesCS493Route,
   CoursesCapstoneRoute: CoursesCapstoneRoute,
   CoursesIntroToComputerGraphicsRoute: CoursesIntroToComputerGraphicsRoute,
-  DemoTableRoute: DemoTableRoute,
   ProjectsEzBudgetRoute: ProjectsEzBudgetRoute,
   AboutMeWorkExperienceItRoute: AboutMeWorkExperienceItRoute,
 }
