@@ -9,26 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ProjectsRouteImport } from './routes/projects'
-import { Route as CoursesRouteImport } from './routes/courses'
-import { Route as AboutMeRouteImport } from './routes/about-me'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsEzBudgetRouteImport } from './routes/projects_/ez-budget'
-import { Route as DemoTableRouteImport } from './routes/demo_/table'
-import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses_/intro-to-computer-graphics'
-import { Route as CoursesCapstoneRouteImport } from './routes/courses_/capstone'
-import { Route as CoursesCS493RouteImport } from './routes/courses_/CS493'
+import { Route as AboutMeRouteImport } from './routes/about-me'
+import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as AboutMeServerManagementRouteImport } from './routes/about-me_/server-management'
+import { Route as CoursesCS493RouteImport } from './routes/courses_/CS493'
+import { Route as CoursesCapstoneRouteImport } from './routes/courses_/capstone'
+import { Route as CoursesIntroToComputerGraphicsRouteImport } from './routes/courses_/intro-to-computer-graphics'
+import { Route as DemoTableRouteImport } from './routes/demo_/table'
+import { Route as ProjectsEzBudgetRouteImport } from './routes/projects_/ez-budget'
 import { Route as AboutMeWorkExperienceItRouteImport } from './routes/about-me_/work-experience/it'
 
-const ProjectsRoute = ProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoursesRoute = CoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeRoute = AboutMeRouteImport.update({
@@ -36,19 +31,29 @@ const AboutMeRoute = AboutMeRouteImport.update({
   path: '/about-me',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsEzBudgetRoute = ProjectsEzBudgetRouteImport.update({
-  id: '/projects_/ez-budget',
-  path: '/projects/ez-budget',
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoTableRoute = DemoTableRouteImport.update({
-  id: '/demo_/table',
-  path: '/demo/table',
+const AboutMeServerManagementRoute = AboutMeServerManagementRouteImport.update({
+  id: '/about-me_/server-management',
+  path: '/about-me/server-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesCS493Route = CoursesCS493RouteImport.update({
+  id: '/courses_/CS493',
+  path: '/courses/CS493',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesCapstoneRoute = CoursesCapstoneRouteImport.update({
+  id: '/courses_/capstone',
+  path: '/courses/capstone',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesIntroToComputerGraphicsRoute =
@@ -57,19 +62,14 @@ const CoursesIntroToComputerGraphicsRoute =
     path: '/courses/intro-to-computer-graphics',
     getParentRoute: () => rootRouteImport,
   } as any)
-const CoursesCapstoneRoute = CoursesCapstoneRouteImport.update({
-  id: '/courses_/capstone',
-  path: '/courses/capstone',
+const DemoTableRoute = DemoTableRouteImport.update({
+  id: '/demo_/table',
+  path: '/demo/table',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CoursesCS493Route = CoursesCS493RouteImport.update({
-  id: '/courses_/CS493',
-  path: '/courses/CS493',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutMeServerManagementRoute = AboutMeServerManagementRouteImport.update({
-  id: '/about-me_/server-management',
-  path: '/about-me/server-management',
+const ProjectsEzBudgetRoute = ProjectsEzBudgetRouteImport.update({
+  id: '/projects_/ez-budget',
+  path: '/projects/ez-budget',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutMeWorkExperienceItRoute = AboutMeWorkExperienceItRouteImport.update({
@@ -176,18 +176,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/projects': {
-      id: '/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof ProjectsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about-me': {
@@ -197,39 +190,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutMeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects_/ez-budget': {
-      id: '/projects_/ez-budget'
-      path: '/projects/ez-budget'
-      fullPath: '/projects/ez-budget'
-      preLoaderRoute: typeof ProjectsEzBudgetRouteImport
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo_/table': {
-      id: '/demo_/table'
-      path: '/demo/table'
-      fullPath: '/demo/table'
-      preLoaderRoute: typeof DemoTableRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses_/intro-to-computer-graphics': {
-      id: '/courses_/intro-to-computer-graphics'
-      path: '/courses/intro-to-computer-graphics'
-      fullPath: '/courses/intro-to-computer-graphics'
-      preLoaderRoute: typeof CoursesIntroToComputerGraphicsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses_/capstone': {
-      id: '/courses_/capstone'
-      path: '/courses/capstone'
-      fullPath: '/courses/capstone'
-      preLoaderRoute: typeof CoursesCapstoneRouteImport
+    '/about-me_/server-management': {
+      id: '/about-me_/server-management'
+      path: '/about-me/server-management'
+      fullPath: '/about-me/server-management'
+      preLoaderRoute: typeof AboutMeServerManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/courses_/CS493': {
@@ -239,11 +218,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesCS493RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about-me_/server-management': {
-      id: '/about-me_/server-management'
-      path: '/about-me/server-management'
-      fullPath: '/about-me/server-management'
-      preLoaderRoute: typeof AboutMeServerManagementRouteImport
+    '/courses_/capstone': {
+      id: '/courses_/capstone'
+      path: '/courses/capstone'
+      fullPath: '/courses/capstone'
+      preLoaderRoute: typeof CoursesCapstoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses_/intro-to-computer-graphics': {
+      id: '/courses_/intro-to-computer-graphics'
+      path: '/courses/intro-to-computer-graphics'
+      fullPath: '/courses/intro-to-computer-graphics'
+      preLoaderRoute: typeof CoursesIntroToComputerGraphicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo_/table': {
+      id: '/demo_/table'
+      path: '/demo/table'
+      fullPath: '/demo/table'
+      preLoaderRoute: typeof DemoTableRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects_/ez-budget': {
+      id: '/projects_/ez-budget'
+      path: '/projects/ez-budget'
+      fullPath: '/projects/ez-budget'
+      preLoaderRoute: typeof ProjectsEzBudgetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about-me_/work-experience/it': {
