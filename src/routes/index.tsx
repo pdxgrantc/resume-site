@@ -2,6 +2,7 @@ import { useRef } from 'react'
 
 import { createFileRoute } from '@tanstack/react-router'
 import { ScrollButton, OutsideLink } from '@/components/utils/buttons'
+import { Section } from '@/components/utils/container'
 import { LinkButton } from '@/components/utils/buttons'
 
 // icons
@@ -60,33 +61,31 @@ interface ChildPropsBio {
 
 function Bio({ ref }: ChildPropsBio) {
   return (
-    <div
-      ref={ref}
-      id="bio"
-      className="px-page min-h-100 bg-white flex flex-row"
-    >
-      <div className="flex flex-col">
-        <p>Name: Grant Conklin</p>
-        <p>School: Oregon State University</p>
-        <p>Hometown: Portland, OR</p>
-        <div className="flex">
-          <OutsideLink link="https://www.github.com/pdxgrantc">
-            <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
-          </OutsideLink>
-          <OutsideLink link="mailto:pdxgrantc@gmail.com">
-            <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
-          </OutsideLink>
-          <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
-            <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
-          </OutsideLink>
+    <Section scrollRef={ref}>
+      <div ref={ref} className="min-h-100 bg-white flex flex-row">
+        <div className="flex flex-col">
+          <p>Name: Grant Conklin</p>
+          <p>School: Oregon State University</p>
+          <p>Hometown: Portland, OR</p>
+          <div className="flex">
+            <OutsideLink link="https://www.github.com/pdxgrantc">
+              <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
+            </OutsideLink>
+            <OutsideLink link="mailto:pdxgrantc@gmail.com">
+              <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
+            </OutsideLink>
+            <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
+              <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
+            </OutsideLink>
+          </div>
         </div>
-      </div>
-      <div>
         <div>
-          <button className="nav-button">Download Resume</button>
+          <div>
+            <button className="nav-button">Download Resume</button>
+          </div>
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
 
