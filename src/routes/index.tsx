@@ -1,5 +1,8 @@
+import { useRef } from 'react'
+
 import { createFileRoute } from '@tanstack/react-router'
 import { ScrollButton, OutsideLink } from '@/components/utils/buttons'
+import { LinkButton } from '@/components/utils/buttons'
 
 // icons
 import { SiGithub as GitHubLogo } from 'react-icons/si'
@@ -15,33 +18,53 @@ function App() {
 }
 
 function NewHomePage() {
+  const bioRef = useRef<HTMLDivElement | null>(null)
+
+  const handleScroll = () => {
+    if (bioRef.current)
+      bioRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+  }
+
   return (
     <>
       <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
-        <DesktopLanding></DesktopLanding>
-        <Bio></Bio>
+        <DesktopLanding handleScrollFunction={handleScroll}></DesktopLanding>
+        <Bio ref={bioRef}></Bio>
       </div>
     </>
   )
 }
 
-function DesktopLanding() {
+interface ChildPropsDesktopLanding {
+  handleScrollFunction: () => void
+}
+
+function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
     <div className="px-page min-h-screen w-full bg-amber-800">
       <div>
         <h1>Hello, I'm Grant</h1>
         <h2>IT Technician, Developer, Student</h2>
-        <ScrollButton>
-          <p>Learn More</p>
-        </ScrollButton>
+        <ScrollButton onClick={handleScrollFunction}>Learn More</ScrollButton>
       </div>
     </div>
   )
 }
 
-function Bio() {
+interface ChildPropsBio {
+  ref: React.RefObject<HTMLDivElement | null>
+}
+
+function Bio({ ref }: ChildPropsBio) {
   return (
-    <div className="px-page min-h-100 bg-white flex flex-row">
+    <div
+      ref={ref}
+      id="bio"
+      className="px-page min-h-100 bg-white flex flex-row"
+    >
       <div className="flex flex-col">
         <p>Name: Grant Conklin</p>
         <p>School: Oregon State University</p>
@@ -60,7 +83,7 @@ function Bio() {
       </div>
       <div>
         <div>
-          <button>Download Resume</button>
+          <button className="nav-button">Download Resume</button>
         </div>
       </div>
     </div>

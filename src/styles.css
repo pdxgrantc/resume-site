@@ -87,7 +87,6 @@ button {
   font-weight: var(--font-weight-bold);
   width: fit-content;
   display: flex;
-  margin-top: 4px;
   gap: 12px;
 
   transition-property: all;
@@ -109,6 +108,11 @@ button {
   ;
 }
 
+.nav-button:hover {
+  color: white;
+  border-color: white;
+}
+
 @property --tw-ease {
   syntax: "*";
   inherits: false;
@@ -117,13 +121,6 @@ button {
 @property --tw-duration {
   syntax: "*";
   inherits: false;
-}
-
-.nav-button:hover {
-  margin-top: 0px;
-  margin-bottom: 4px;
-  color: white;
-  border-color: white;
 }
 
 @property --tw-border-style {

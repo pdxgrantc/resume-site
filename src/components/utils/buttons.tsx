@@ -1,8 +1,18 @@
 import React from 'react'
 import { Link } from '@tanstack/react-router'
 
-export function ScrollButton({ children }: { children: React.ReactNode }) {
-  return <button className="nav-button">{children}</button>
+export function ScrollButton({
+  onClick,
+  children,
+}: {
+  onClick: () => void | null
+  children: React.ReactNode
+}) {
+  return (
+    <button onClick={onClick} className="nav-button">
+      {children}
+    </button>
+  )
 }
 
 /* 
@@ -68,6 +78,16 @@ export const OutsideLink = ({
       target="_blank"
       rel="noreferrer"
       className="
+        nav-button
+      "
+    >
+      {children}
+    </a>
+  )
+}
+
+/* Old class
+className="
         relative
         bg-transparent
         border-0
@@ -79,10 +99,7 @@ export const OutsideLink = ({
         font-bold
         w-fit flex gap-3 mt-1
         transition-all duration-300 ease-in-out
-        hover:text-white hover:mt-0 hover:mb-1 hover:border-white
+        hover:text-gray-300 hover:mt-0 hover:mb-1 hover:border-white
       "
-    >
-      {children}
-    </a>
-  )
-}
+
+    */
