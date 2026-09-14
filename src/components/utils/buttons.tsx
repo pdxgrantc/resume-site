@@ -1,6 +1,29 @@
 import React from 'react'
 import { Link } from '@tanstack/react-router'
 
+export function ScrollButton({ children }: { children: React.ReactNode }) {
+  return <button className="nav-button">{children}</button>
+}
+
+/* 
+--Tailwind Scroll Button CSS
+--Now defined in styles.css as .nav-button
+    className="
+        relative
+        bg-transparent
+        border-0
+        h-fit
+        pb-0.75
+        box-border
+        border-b-[3px] border-transparent
+        align-middle
+        font-bold
+        w-fit flex gap-3 mt-1
+        transition-all duration-300 ease-in-out
+        hover:text-white hover:mt-0 hover:mb-1 hover:border-white
+      "
+      */
+
 export function LinkButton({
   children,
   route,

@@ -1,11 +1,73 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { LinkButton } from '@/components/utils/buttons'
+import { ScrollButton, OutsideLink } from '@/components/utils/buttons'
+
+// icons
+import { SiGithub as GitHubLogo } from 'react-icons/si'
+import { FaLinkedinIn as LinkedLogo } from 'react-icons/fa'
+import { IoIosMail as MailLogo } from 'react-icons/io'
 
 export const Route = createFileRoute('/')({
   component: App,
 })
 
 function App() {
+  return <NewHomePage />
+}
+
+function NewHomePage() {
+  return (
+    <>
+      <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
+        <DesktopLanding></DesktopLanding>
+        <Bio></Bio>
+      </div>
+    </>
+  )
+}
+
+function DesktopLanding() {
+  return (
+    <div className="px-page min-h-screen w-full bg-amber-800">
+      <div>
+        <h1>Hello, I'm Grant</h1>
+        <h2>IT Technician, Developer, Student</h2>
+        <ScrollButton>
+          <p>Learn More</p>
+        </ScrollButton>
+      </div>
+    </div>
+  )
+}
+
+function Bio() {
+  return (
+    <div className="px-page min-h-100 bg-white flex flex-row">
+      <div className="flex flex-col">
+        <p>Name: Grant Conklin</p>
+        <p>School: Oregon State University</p>
+        <p>Hometown: Portland, OR</p>
+        <div className="flex">
+          <OutsideLink link="https://www.github.com/pdxgrantc">
+            <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
+          </OutsideLink>
+          <OutsideLink link="mailto:pdxgrantc@gmail.com">
+            <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
+          </OutsideLink>
+          <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
+            <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
+          </OutsideLink>
+        </div>
+      </div>
+      <div>
+        <div>
+          <button>Download Resume</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function OldHomePage() {
   return (
     <header
       className="flex-1 max-h-full max-w-screen m-auto flex flex-row flex-nowrap"

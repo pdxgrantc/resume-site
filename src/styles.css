@@ -15,19 +15,19 @@ code {
 }
 
 /* define header height variable */
-:root{
+:root {
   --header-height: 64px;
   --page-break: 5rem
 }
 
 
 @theme {
+  --margin-page: 5rem;
   --page-break: 1rem;
   --radius-img: 1rem;
   --radius-container: 1rem;
   --padding-container: 1.5rem;
-  --padding-page: 5rem;
-  --padding-page: 5rem;
+  --padding-page: 10rem;
   --padding-page-break: 2rem;
   --gap-page-break: 2rem;
   --gap-container: 1.5rem;
@@ -38,7 +38,12 @@ code {
   --color-light: #ededed;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
@@ -63,6 +68,71 @@ button {
 }
 
 /* Increase paragraph spacing inside Tailwind Typography `.prose` */
-.prose p + p {
+.prose p+p {
   margin-top: 1rem;
+}
+
+.nav-button {
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  height: fit-content;
+  padding-bottom: 3px;
+  box-sizing: border-box;
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 3px;
+  border-color: transparent;
+  vertical-align: middle;
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
+  width: fit-content;
+  display: flex;
+  margin-top: 4px;
+  gap: 12px;
+
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)
+      /* cubic-bezier(0.4, 0, 0.2, 1) */
+    );
+  transition-duration: var(--tw-duration, var(--default-transition-duration)
+      /* 150ms */
+    );
+
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+
+  --tw-ease: var(--ease-in-out)
+    /* cubic-bezier(0.4, 0, 0.2, 1) */
+  ;
+  transition-timing-function: var(--ease-in-out)
+    /* cubic-bezier(0.4, 0, 0.2, 1) */
+  ;
+}
+
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+
+.nav-button:hover {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  color: white;
+  border-color: white;
+}
+
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
