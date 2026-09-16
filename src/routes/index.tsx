@@ -45,7 +45,7 @@ interface ChildPropsDesktopLanding {
 
 function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
-    <div className="px-page min-h-screen w-full bg-amber-800">
+    <div className="px-page min-h-screen w-full bg-[url('/images/.jpg')] bg-cover bg-center ">
       <div>
         <h1>Hello, I'm Grant</h1>
         <h2>IT Technician, Developer, Student</h2>
