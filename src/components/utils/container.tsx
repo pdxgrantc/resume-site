@@ -11,6 +11,7 @@ interface ChildPropsSection {
   title?: string | null
   scrollRef?: React.RefObject<HTMLDivElement | null>
   className?: string
+  background?: string
 }
 
 export function Section({
@@ -18,11 +19,18 @@ export function Section({
   title,
   className,
   scrollRef,
+  background,
 }: ChildPropsSection) {
   return (
-    <div className={`px-page py-container ${className ?? ''}`} ref={scrollRef}>
-      <h2>{title}</h2>
-      {children}
+    <div
+      className={`px-page py-container ${className ?? ''}`}
+      style={{
+        backgroundColor: `#${background ?? 'ffffff'}`,
+      }}
+      ref={scrollRef}
+    >
+      {title && <h2 className="font-bold text-6xl">{title}</h2>}
+      <div>{children}</div>
     </div>
   )
 }

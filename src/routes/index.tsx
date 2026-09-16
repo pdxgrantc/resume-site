@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { ScrollButton, OutsideLink } from '@/components/utils/buttons'
 import { Section } from '@/components/utils/container'
-import { LinkButton } from '@/components/utils/buttons'
 
 // icons
 import { SiGithub as GitHubLogo } from 'react-icons/si'
@@ -16,6 +15,7 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return <NewHomePage />
+  //return <OldHomePage />
 }
 
 function NewHomePage() {
@@ -34,6 +34,15 @@ function NewHomePage() {
       <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
         <DesktopLanding handleScrollFunction={handleScroll}></DesktopLanding>
         <Bio ref={bioRef}></Bio>
+        <Section title={'Education'} background="f0f7ff">
+          <p>Testing the section background</p>
+        </Section>
+        <Section title={'Experience'}>
+          <p>Testing the section background</p>
+        </Section>
+        <Section title={'Projects'} background="f0f7ff">
+          <p>Testing the section background</p>
+        </Section>
       </div>
     </>
   )
@@ -45,8 +54,8 @@ interface ChildPropsDesktopLanding {
 
 function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
-    <div className="px-page min-h-screen w-full bg-[url('/images/.jpg')] bg-cover bg-center ">
-      <div>
+    <div className="px-page min-h-screen w-full bg-[url('/images/LandingPage.jpg')] bg-cover bg-center ">
+      <div className="text-white">
         <h1>Hello, I'm Grant</h1>
         <h2>IT Technician, Developer, Student</h2>
         <ScrollButton onClick={handleScrollFunction}>Learn More</ScrollButton>
@@ -89,6 +98,7 @@ function Bio({ ref }: ChildPropsBio) {
   )
 }
 
+/*
 function OldHomePage() {
   return (
     <header
@@ -155,3 +165,4 @@ function CurrentProject() {
     </div>
   )
 }
+*/

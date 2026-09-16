@@ -26,7 +26,7 @@ code {
   --page-break: 1rem;
   --radius-img: 1rem;
   --radius-container: 1rem;
-  --padding-container: 4rem;
+  --padding-container: 6rem;
   --padding-page: 10rem;
   --padding-page-break: 2rem;
   --gap-page-break: 2rem;
@@ -46,21 +46,6 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-}
-
-h1 {
-  font-size: 2.25rem;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-h3 {
-  font-size: 1.25rem;
-  font-weight: semi-bold;
 }
 
 button {
