@@ -30,21 +30,21 @@ function NewHomePage() {
   }
 
   return (
-    <>
-      <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
-        <DesktopLanding handleScrollFunction={handleScroll}></DesktopLanding>
-        <Bio ref={bioRef}></Bio>
-        <Section title={'Education'} background="f0f7ff">
-          <p>Testing the section background</p>
-        </Section>
-        <Section title={'Experience'}>
-          <p>Testing the section background</p>
-        </Section>
-        <Section title={'Projects'} background="f0f7ff">
-          <p>Testing the section background</p>
-        </Section>
-      </div>
-    </>
+    <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
+      <DesktopLanding handleScrollFunction={handleScroll}></DesktopLanding>
+      <Section scrollRef={bioRef}>
+        <Bio></Bio>
+      </Section>
+      <Section title={'Education'} background="f0f7ff">
+        <p>Testing the section background</p>
+      </Section>
+      <Section title={'Experience'}>
+        <p>Testing the section background</p>
+      </Section>
+      <Section title={'Projects'} background="f0f7ff">
+        <p>Testing the section background</p>
+      </Section>
+    </div>
   )
 }
 
@@ -54,8 +54,8 @@ interface ChildPropsDesktopLanding {
 
 function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
-    <div className="px-page min-h-screen w-full bg-[url('/images/LandingPage.jpg')] bg-cover bg-center ">
-      <div className="text-white">
+    <div className="px-page min-h-screen w-full bg-[url('/images/LandingPage.jpg')] bg-cover bg-center flex items-center justify-end">
+      <div className="text-white text-left">
         <h1>Hello, I'm Grant</h1>
         <h2>IT Technician, Developer, Student</h2>
         <ScrollButton onClick={handleScrollFunction}>Learn More</ScrollButton>
@@ -64,37 +64,31 @@ function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   )
 }
 
-interface ChildPropsBio {
-  ref: React.RefObject<HTMLDivElement | null>
-}
-
-function Bio({ ref }: ChildPropsBio) {
+function Bio() {
   return (
-    <Section scrollRef={ref}>
-      <div ref={ref} className="min-h-100 bg-white flex flex-row">
-        <div className="flex flex-col">
-          <p>Name: Grant Conklin</p>
-          <p>School: Oregon State University</p>
-          <p>Hometown: Portland, OR</p>
-          <div className="flex">
-            <OutsideLink link="https://www.github.com/pdxgrantc">
-              <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
-            </OutsideLink>
-            <OutsideLink link="mailto:pdxgrantc@gmail.com">
-              <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
-            </OutsideLink>
-            <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
-              <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
-            </OutsideLink>
-          </div>
-        </div>
-        <div>
-          <div>
-            <button className="nav-button">Download Resume</button>
-          </div>
+    <div className="flex flex-row">
+      <div className="flex flex-col">
+        <p>Name: Grant Conklin</p>
+        <p>School: Oregon State University</p>
+        <p>Hometown: Portland, OR</p>
+        <div className="flex">
+          <OutsideLink link="https://www.github.com/pdxgrantc">
+            <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
+          </OutsideLink>
+          <OutsideLink link="mailto:pdxgrantc@gmail.com">
+            <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
+          </OutsideLink>
+          <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
+            <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
+          </OutsideLink>
         </div>
       </div>
-    </Section>
+      <div>
+        <div>
+          <button className="nav-button">Download Resume</button>
+        </div>
+      </div>
+    </div>
   )
 }
 
