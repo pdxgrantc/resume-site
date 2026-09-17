@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 
 import { createFileRoute } from '@tanstack/react-router'
-import { ScrollButton, OutsideLink } from '@/components/utils/buttons'
+import { ScrollButton, IconLink } from '@/components/utils/buttons'
 import { Section } from '@/components/utils/container'
 
 // icons
@@ -30,7 +30,7 @@ function NewHomePage() {
   }
 
   return (
-    <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap">
+    <div className="max-h-full max-w-screen m-auto flex flex-col flex-nowrap text-xl font-medium">
       <DesktopLanding handleScrollFunction={handleScroll}></DesktopLanding>
       <Section scrollRef={bioRef}>
         <Bio></Bio>
@@ -55,10 +55,16 @@ interface ChildPropsDesktopLanding {
 function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
     <div className="px-page min-h-screen w-full bg-[url('/images/LandingPage.jpg')] bg-cover bg-center flex items-center justify-end">
-      <div className="text-white text-left">
-        <h1>Hello, I'm Grant</h1>
-        <h2>IT Technician, Developer, Student</h2>
-        <ScrollButton onClick={handleScrollFunction}>Learn More</ScrollButton>
+      <div className="flex flex-col gap-7 text-white text-right pr-[10%] pb-[15%]">
+        <div>
+          <h1 className="text-6xl font-extrabold">Hello, I'm Grant</h1>
+          <h2 className="text-2xl font-bold">
+            IT Technician, Developer, Student
+          </h2>
+        </div>
+        <ScrollButton className="ml-auto" onClick={handleScrollFunction}>
+          <h3 className="text-xl">Learn More</h3>
+        </ScrollButton>
       </div>
     </div>
   )
@@ -66,25 +72,34 @@ function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
 
 function Bio() {
   return (
-    <div className="flex flex-row">
-      <div className="flex flex-col">
+    <div className="flex flex-row gap-5">
+      <div className="flex flex-col min-w-[20%]">
         <p>Name: Grant Conklin</p>
         <p>School: Oregon State University</p>
         <p>Hometown: Portland, OR</p>
         <div className="flex">
-          <OutsideLink link="https://www.github.com/pdxgrantc">
-            <GitHubLogo className="h-12 w-auto py-2 mx--auto text-button hover:text-button_hover" />
-          </OutsideLink>
-          <OutsideLink link="mailto:pdxgrantc@gmail.com">
+          <IconLink link="https://www.github.com/pdxgrantc">
+            <GitHubLogo className="h-12 w-auto py-2 mx-auto text-button hover:text-button_hover" />
+          </IconLink>
+          <IconLink link="mailto:pdxgrantc@gmail.com">
             <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
-          </OutsideLink>
-          <OutsideLink link="https://www.linkedin.com/in/pdxgrantc">
+          </IconLink>
+          <IconLink link="https://www.linkedin.com/in/pdxgrantc">
             <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
-          </OutsideLink>
+          </IconLink>
         </div>
       </div>
       <div>
         <div>
+          <div>
+            <p>
+              I am a student at Oregon State University studying computer
+              science. I expect to graduate in December of 2026 with a Bachelors
+              degree in Computer Science with a focus in web and mobile
+              application development. I am passionate about learning new things
+              and creating new projects.
+            </p>
+          </div>
           <button className="nav-button">Download Resume</button>
         </div>
       </div>

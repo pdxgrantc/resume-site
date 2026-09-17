@@ -4,12 +4,14 @@ import { Link } from '@tanstack/react-router'
 export function ScrollButton({
   onClick,
   children,
+  className = '',
 }: {
-  onClick: () => void | null
+  onClick: () => void
   children: React.ReactNode
+  className?: string
 }) {
   return (
-    <button onClick={onClick} className="nav-button">
+    <button onClick={onClick} className={`nav-button ${className}`}>
       {children}
     </button>
   )
@@ -82,6 +84,49 @@ export const OutsideLink = ({
       "
     >
       {children}
+    </a>
+  )
+}
+
+export const IconLink = ({
+  children,
+  link,
+}: {
+  children: React.ReactNode
+  link: string
+}) => {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      className="
+        group
+        flex size-12
+        items-center justify-center
+        rounded-fu
+        transition-all
+        duration-300
+        ease-in-out
+        hover:-translate-y-1
+        hover:scale-110
+        hover:bg-white
+        hover:text-black
+      "
+    >
+      <span
+        className="
+          flex size-7
+          items-center justify-center
+          transition-colors
+          duration-300
+          [&>svg]:h-full
+          [&>svg]:w-full
+          [&>svg]:fill-current
+        "
+      >
+        {children}
+      </span>
     </a>
   )
 }
