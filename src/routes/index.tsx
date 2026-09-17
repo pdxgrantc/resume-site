@@ -79,10 +79,10 @@ function Bio() {
         <p>Hometown: Portland, OR</p>
         <div className="flex">
           <IconLink link="https://www.github.com/pdxgrantc">
-            <GitHubLogo className="h-12 w-auto py-2 mx-auto text-button hover:text-button_hover" />
+            <GitHubLogo className="h-12 w-auto mx-auto text-button hover:text-button_hover" />
           </IconLink>
           <IconLink link="mailto:pdxgrantc@gmail.com">
-            <MailLogo className="h-12 py-0 w-auto text-button hover:text-button_hover" />
+            <MailLogo className="h-12 w-auto text-button hover:text-button_hover" />
           </IconLink>
           <IconLink link="https://www.linkedin.com/in/pdxgrantc">
             <LinkedLogo className="h-11 w-auto text-button hover:text-button_hover" />
