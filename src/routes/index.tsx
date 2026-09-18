@@ -55,7 +55,7 @@ interface ChildPropsDesktopLanding {
 function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
   return (
     <div className="px-page min-h-screen w-full bg-[url('/images/LandingPage.jpg')] bg-cover bg-center flex items-center justify-end">
-      <div className="flex flex-col gap-7 text-white text-right pr-[10%] pb-[15%]">
+      <div className="flex flex-col gap-7 text-white text-right pr-[8%] pb-[15%]">
         <div>
           <h1 className="text-6xl font-extrabold">Hello, I'm Grant</h1>
           <h2 className="text-2xl font-bold">
@@ -63,7 +63,7 @@ function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
           </h2>
         </div>
         <ScrollButton className="ml-auto" onClick={handleScrollFunction}>
-          <h3 className="text-xl">Learn More</h3>
+          <h3 className="text-2xl">Learn More</h3>
         </ScrollButton>
       </div>
     </div>
@@ -71,13 +71,30 @@ function DesktopLanding({ handleScrollFunction }: ChildPropsDesktopLanding) {
 }
 
 function Bio() {
+  function calculateAge(): string {
+    const date = new Date(2001, 8, 15) // Month is 0-indexed, so 8 = September
+    const today = new Date()
+
+    let years = today.getFullYear() - date.getFullYear()
+
+    if (
+      today.getMonth() < date.getMonth() ||
+      (today.getMonth() === date.getMonth() && today.getDate() < date.getDate())
+    ) {
+      years--
+    }
+
+    return years.toString()
+  }
+
   return (
-    <div className="flex flex-row gap-5">
-      <div className="flex flex-col min-w-[20%]">
-        <p>Name: Grant Conklin</p>
-        <p>School: Oregon State University</p>
-        <p>Hometown: Portland, OR</p>
-        <div className="flex">
+    <div className="flex flex-row gap-15 h-fit">
+      <div className="flex flex-col place-content-between min-w-fit min-h-50 max-h-68.75">
+        <BioItem data1={'Name'} data2={'Grant Conklin'}></BioItem>
+        <BioItem data1={'School'} data2={'Oregon State University'}></BioItem>
+        <BioItem data1={'Age'} data2={calculateAge()}></BioItem>
+        <BioItem data1={'Hometown'} data2={'Portland, OR'}></BioItem>
+        <div className="flex gap-3">
           <IconLink link="https://www.github.com/pdxgrantc">
             <GitHubLogo className="h-12 w-auto mx-auto text-button hover:text-button_hover" />
           </IconLink>
@@ -89,20 +106,41 @@ function Bio() {
           </IconLink>
         </div>
       </div>
-      <div>
-        <div>
-          <div>
-            <p>
-              I am a student at Oregon State University studying computer
-              science. I expect to graduate in December of 2026 with a Bachelors
-              degree in Computer Science with a focus in web and mobile
-              application development. I am passionate about learning new things
-              and creating new projects.
-            </p>
-          </div>
-          <button className="nav-button">Download Resume</button>
+      <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
+          <p>
+            I am a student at Oregon State University studying computer science.
+            I expect to graduate in December of 2026 with a Bachelors degree in
+            Computer Science with a focus in web and mobile application
+            development. I am passionate about learning new things and creating
+            new projects.
+          </p>
+          <p>
+            Outside of school, I enjoy spending time outdoors and working on
+            hands-on projects. You can find me going skiing, hiking, and camping
+            and camping in the areas surrounding Corvallis. Recently I’ve taken
+            up a big interest in woodworking. My most recent build was a custom
+            coffee table for my apartment.
+          </p>
         </div>
+        <button className="w-fit outline-1 px-10 py-3 transition-all duration-300 ease-in-out hover:bg-gray-100">
+          Download Resume
+        </button>
       </div>
+    </div>
+  )
+}
+
+interface ChildPropsBioItem {
+  data1: string
+  data2: string
+}
+
+function BioItem({ data1, data2 }: ChildPropsBioItem) {
+  return (
+    <div className="flex text-nowrap gap-2 pb-2 border-b">
+      <p className="font-extrabold">{data1}:</p>
+      <p>{data2}</p>
     </div>
   )
 }

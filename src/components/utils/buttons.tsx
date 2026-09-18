@@ -101,7 +101,6 @@ export const IconLink = ({
       target="_blank"
       rel="noreferrer"
       className="
-        group
         flex size-12
         items-center justify-center
         rounded-fu
