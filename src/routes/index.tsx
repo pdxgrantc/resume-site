@@ -4,10 +4,18 @@ import { createFileRoute } from '@tanstack/react-router'
 import { ScrollButton, IconLink } from '@/components/utils/buttons'
 import { Section } from '@/components/utils/container'
 
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from 'react-vertical-timeline-component'
+import 'react-vertical-timeline-component/style.min.css'
+
 // icons
 import { SiGithub as GitHubLogo } from 'react-icons/si'
 import { FaLinkedinIn as LinkedLogo } from 'react-icons/fa'
 import { IoIosMail as MailLogo } from 'react-icons/io'
+import { IoMdSchool as CapIcon } from 'react-icons/io'
+import { FaSchoolFlag as SchoolIcon } from 'react-icons/fa6'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -36,7 +44,7 @@ function NewHomePage() {
         <Bio></Bio>
       </Section>
       <Section title={'Education'} background="f0f7ff">
-        <p>Testing the section background</p>
+        <Education></Education>
       </Section>
       <Section title={'Experience'}>
         <p>Testing the section background</p>
@@ -123,9 +131,12 @@ function Bio() {
             coffee table for my apartment.
           </p>
         </div>
-        <button className="w-fit outline-1 px-10 py-3 transition-all duration-300 ease-in-out hover:bg-gray-100">
+        <a
+          href="/Resume-Technical-2026.pdf"
+          className="w-fit outline-1 px-10 py-3 transition-all duration-300 ease-in-out hover:bg-gray-100"
+        >
           Download Resume
-        </button>
+        </a>
       </div>
     </div>
   )
@@ -145,71 +156,34 @@ function BioItem({ data1, data2 }: ChildPropsBioItem) {
   )
 }
 
-/*
-function OldHomePage() {
+function Education() {
   return (
-    <header
-      className="flex-1 max-h-full max-w-screen m-auto flex flex-row flex-nowrap"
-      style={{ minHeight: 'calc(100vh - var(--header-height))' }}
-    >
-      <img
-        src="/images/Grant-Headshot.jpg"
-        alt="Grant-Headshot"
-        style={{ maxHeight: 'calc(100vh - var(--header-height))' }}
-      />
-      <div className="bg-main w-full flex flex-col gap-container text-light p-container">
-        <div className="">
-          <h1>Grant Conklin</h1>
-          <ul>
-            <li>
-              <h3>-Full Stack Web Developer</h3>
-            </li>
-            <li>
-              <h3>-Computer Science Student At Oregon State University</h3>
-            </li>
-            <li>
-              <h3>-IT Professional</h3>
-            </li>
-          </ul>
-        </div>
-        <About />
-        <CurrentProject />
-      </div>
-    </header>
+    <VerticalTimeline layout="1-column-left">
+      <VerticalTimelineElement
+        date="2020 - present"
+        iconStyle={{ background: 'rgb(0, 0, 0)', color: '#fff' }}
+        icon={<CapIcon />}
+      >
+        <h3>Oregon State University</h3>
+        <h4>Corvallis, OR</h4>
+        <p>
+          Computer Science, focus in Web and Application Development Coursework
+          focusing on full stack web development and REST api frameworks.
+        </p>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        date="2010 - 2011"
+        iconStyle={{ background: 'rgb(0, 0, 0)', color: '#fff' }}
+        icon={<SchoolIcon />}
+      >
+        <h3>Grant High School</h3>
+        <h4>Portland, OR</h4>
+        <p>
+          Demonstrated leadership as a varsity water polo player by supporting
+          teammates, communicating effectively, and helping maintain a positive
+          team environment.
+        </p>
+      </VerticalTimelineElement>
+    </VerticalTimeline>
   )
 }
-
-function About() {
-  return (
-    <div>
-      <h2>About Me</h2>
-      <p>
-        I am a student at Oregon State University studying computer science. I
-        expect to graduate in June of 2026 with a Bachelors degree in Computer
-        Science with a focus in web and mobile application development. I am
-        passionate about learning new things and creating new projects.
-      </p>
-
-      <LinkButton route="/about-me">
-        <h3>More About Me</h3>
-      </LinkButton>
-    </div>
-  )
-}
-
-function CurrentProject() {
-  return (
-    <div>
-      <h2>My Current Focus</h2>
-      <p>
-        I have been working on a web app I'm calling Ez Budget. While at
-        university I've had to learn better budgeting techniques using Excel
-        which has been a little clunky to use from my mobile device.
-      </p>
-      <LinkButton route="/projects/ez-budget">
-        <h3>Projects</h3>
-      </LinkButton>
-    </div>
-  )
-}
-*/
