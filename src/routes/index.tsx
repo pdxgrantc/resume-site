@@ -158,7 +158,7 @@ function BioItem({ data1, data2 }: ChildPropsBioItem) {
 
 function Education() {
   return (
-    <VerticalTimeline layout="1-column-left">
+    <VerticalTimeline lineColor={'black'} layout="1-column-left">
       <VerticalTimelineElement
         date="2020 - present"
         iconStyle={{ background: 'rgb(0, 0, 0)', color: '#fff' }}

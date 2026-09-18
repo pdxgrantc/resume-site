@@ -23,7 +23,7 @@ export function Section({
 }: ChildPropsSection) {
   return (
     <div
-      className={`px-page py-container ${className ?? ''}`}
+      className={`px-page py-container flex flex-col gap-10 ${className ?? ''}`}
       style={{
         backgroundColor: `#${background ?? 'ffffff'}`,
       }}
