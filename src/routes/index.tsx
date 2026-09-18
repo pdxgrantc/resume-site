@@ -16,6 +16,8 @@ import { FaLinkedinIn as LinkedLogo } from 'react-icons/fa'
 import { IoIosMail as MailLogo } from 'react-icons/io'
 import { IoMdSchool as CapIcon } from 'react-icons/io'
 import { FaSchoolFlag as SchoolIcon } from 'react-icons/fa6'
+import { FaComputer as ComputerIcon } from 'react-icons/fa6'
+import { LuFerrisWheel as FerrisWheelIcon } from 'react-icons/lu'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -47,11 +49,13 @@ function NewHomePage() {
         <Education></Education>
       </Section>
       <Section title={'Experience'}>
-        <p>Testing the section background</p>
+        <Experience></Experience>
       </Section>
+      {/* 
       <Section title={'Projects'} background="f0f7ff">
         <p>Testing the section background</p>
       </Section>
+      */}
     </div>
   )
 }
@@ -182,6 +186,52 @@ function Education() {
           Demonstrated leadership as a varsity water polo player by supporting
           teammates, communicating effectively, and helping maintain a positive
           team environment.
+        </p>
+      </VerticalTimelineElement>
+    </VerticalTimeline>
+  )
+}
+
+function Experience() {
+  return (
+    <VerticalTimeline lineColor={'black'} layout="1-column-left">
+      <VerticalTimelineElement
+        date="March 2022 - July 2026"
+        iconStyle={{ background: 'rgb(0, 0, 0)', color: '#fff' }}
+        icon={<ComputerIcon />}
+      >
+        <h3>Student Technology Consultant</h3>
+        <h4>Oregon State University - Corvallis, OR</h4>
+        <p>
+          Provided friendly, customer-focused technical support to students,
+          faculty, and staff by troubleshooting hardware, software, user
+          account, printing, and network connectivity issues. Used ServiceNow to
+          document, manage, and follow up on support requests while
+          communicating technical information clearly and ensuring users felt
+          supported throughout the resolution process. Supported Windows device
+          deployment and configuration using Microsoft SCCM/MECM and PXE
+          imaging, managed user and computer accounts through Active Directory,
+          and assisted with software installation, system updates, permissions,
+          and domain-related issues. Collaborated with IT team members to
+          escalate complex problems and deliver timely, reliable technical
+          solutions.
+        </p>
+      </VerticalTimelineElement>
+      <VerticalTimelineElement
+        date="June 2021 - September 2021"
+        iconStyle={{ background: 'rgb(0, 0, 0)', color: '#fff' }}
+        icon={<FerrisWheelIcon />}
+      >
+        <h3>Ride Operator</h3>
+        <h4>Oaks Park - Portland, OR</h4>
+        <p>
+          Provided friendly and professional service to guests by answering
+          questions, giving directions, and helping create a safe and enjoyable
+          park experience. Communicated company policies clearly and
+          respectfully while handling concerns, resolving conflicts, and
+          addressing rule violations. Worked with team members and supervisors
+          to enforce safety procedures consistently while maintaining positive
+          customer interactions.
         </p>
       </VerticalTimelineElement>
     </VerticalTimeline>

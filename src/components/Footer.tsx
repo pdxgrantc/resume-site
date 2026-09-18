@@ -22,7 +22,9 @@ export default function Footer() {
           </OutsideLink>
         </div>
         <div className="mx-auto w-fit">
-          <p className="w-fit">Grant Conklin</p>
+          <p className="w-fit">
+            Copyright &copy; {new Date().getFullYear().toString()} Grant Conklin
+          </p>
         </div>
       </div>
     </div>
